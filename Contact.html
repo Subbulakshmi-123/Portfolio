@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact | Subbulakshmi</title>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --dark-bg: #0d0d0d;
+      --light-text: #e0c8f5;
+      --accent: rgba(209, 153, 255, 0.3);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: "Outfit", sans-serif;
+      background: var(--dark-bg);
+      color: var(--light-text);
+      overflow-x: hidden;
+      min-height: 100vh;
+    }
+
+    /* Header Styles (Same as Landing Page) */
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 2rem 2rem;
+      position: relative;
+      flex-wrap: nowrap;
+    }
+
+    .logo {
+      color: #fff;
+      font-weight: 700;
+      font-size: 1.6rem;
+      white-space: nowrap;
+      /* Prevent text wrapping */
+    }
+
+    .nav-wrapper {
+      display: flex;
+      gap: 1rem;
+      background: rgba(255, 255, 255, 0.05);
+      padding: 0.5rem;
+      border-radius: 12px;
+    }
+
+    nav {
+      display: flex;
+      gap: 1rem;
+    }
+
+    nav a {
+      color: #aaa;
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 1.2rem;
+      padding: 0.6rem 1rem;
+      border-radius: 8px;
+      transition: background 0.3s ease, color 0.3s ease;
+      white-space: nowrap;
+    }
+
+    nav a:hover {
+      background: rgba(209, 153, 255, 0.15);
+      color: #fff;
+    }
+
+    .btn:hover {
+      transform: scale(1.05);
+    }
+
+
+    .btn {
+      background: linear-gradient(90deg, #d199ff, #fab0ff);
+      padding: 0.8rem 1.8rem;
+      border: none;
+      border-radius: 30px;
+      color: #000;
+      font-weight: 600;
+      font-size: 1.1rem;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: transform 0.2s ease;
+    }
+
+    .btn:hover {
+      transform: scale(1.05);
+    }
+
+    .menu-toggle {
+      display: none;
+      font-size: 1.8rem;
+      color: #fff;
+      cursor: pointer;
+      padding: 0.5rem;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 8px;
+    }
+
+    .mobile-nav {
+      display: none;
+      flex-direction: column;
+      gap: 1rem;
+      position: absolute;
+      top: 100%;
+      right: 2rem;
+      background: #1a1a1a;
+      border: 1px solid #333;
+      padding: 1rem;
+      border-radius: 12px;
+      z-index: 999;
+      min-width: 200px;
+    }
+
+    .mobile-nav a {
+      font-size: 1rem;
+      padding: 0.5rem;
+      color: #ccc;
+      text-decoration: none;
+    }
+
+    .mobile-nav a:hover {
+      color: #fff;
+      background: rgba(209, 153, 255, 0.1);
+    }
+
+    /* Main Content Styles */
+    .main-container {
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: 4rem;
+      max-width: 1300px;
+      margin: 0 auto;
+      padding: 3rem 4rem;
+      align-items: center;
+    }
+
+    .profile-card {
+      background: #1a1a1a;
+      padding: 2.5rem;
+      border-radius: 24px;
+      text-align: center;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    }
+
+    .profile-card img {
+      width: 100%;
+      max-width: 280px;
+      border-radius: 20px;
+      margin-bottom: 1.2rem;
+      border: 3px solid var(--accent);
+    }
+
+    .profile-card h2 {
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .profile-card p {
+      font-size: 1.1rem;
+      color: #ccc;
+      margin-bottom: 0.4rem;
+    }
+
+    .social-icons {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin: 1rem 0;
+    }
+
+    .social-icons a {
+      color: #fff;
+      text-decoration: none;
+      font-size: 1.2rem;
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      background: rgba(209, 153, 255, 0.1);
+      transition: all 0.3s ease;
+    }
+
+    .social-icons a:hover {
+      background: rgba(209, 153, 255, 0.3);
+      transform: translateY(-3px);
+    }
+
+    .contact-container {
+      max-width: 600px;
+      width: 100%;
+      padding: 2rem;
+    }
+
+    .contact-container h1 {
+      text-align: center;
+      margin-bottom: 2rem;
+      font-size: 2rem;
+      background: linear-gradient(90deg, #d199ff, #fab0ff);
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    input,
+    textarea {
+      padding: 1rem;
+      border-radius: 12px;
+      border: 1px solid #444;
+      background: #121212;
+      color: #fff;
+      font-size: 1rem;
+      width: 100%;
+    }
+
+    input:focus,
+    textarea:focus {
+      outline: none;
+      border-color: #d199ff;
+      box-shadow: 0 0 0 2px rgba(209, 153, 255, 0.3);
+    }
+
+    button[type="submit"] {
+      padding: 1rem;
+      background: linear-gradient(90deg, #d199ff, #fab0ff);
+      color: #000;
+      border: none;
+      border-radius: 30px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+      font-size: 1.1rem;
+    }
+
+    button[type="submit"]:hover {
+      transform: translateY(-2px);
+    }
+
+    .status-message {
+      text-align: center;
+      padding: 1rem;
+      margin-top: 1rem;
+      border-radius: 10px;
+      display: none;
+    }
+
+    .success-message {
+      background: rgba(46, 204, 113, 0.1);
+      color: #2ecc71;
+    }
+
+    .error-message {
+      background: rgba(231, 76, 60, 0.1);
+      color: #e74c3c;
+    }
+
+    .loading-message {
+      background: rgba(241, 196, 15, 0.1);
+      color: #f1c40f;
+    }
+
+    .spinner {
+      display: inline-block;
+      width: 16px;
+      height: 16px;
+      border: 3px solid rgba(255, 255, 255, 0.3);
+      border-radius: 50%;
+      border-top-color: #fff;
+      animation: spin 1s linear infinite;
+      margin-right: 10px;
+    }
+
+    @keyframes spin {
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    .circle-glow {
+      position: absolute;
+      width: 500px;
+      height: 800px;
+      background: radial-gradient(circle, #9b59b6 0%, transparent 70%);
+      top: -100px;
+      right: -150px;
+      z-index: -1;
+      filter: blur(80px);
+    }
+
+    /* Responsive Styles */
+    @media (max-width: 1024px) {
+      .main-container {
+        grid-template-columns: 1fr;
+        padding: 2rem;
+        gap: 3rem;
+      }
+
+      .profile-card {
+        max-width: 400px;
+        margin: 0 auto;
+      }
+
+      .contact-container {
+        max-width: 100%;
+      }
+    }
+
+    @media (max-width: 768px) {
+      header {
+        padding: 1rem;
+      }
+
+      .logo {
+        font-size: 1.3rem;
+      }
+
+      .nav-wrapper {
+        display: none;
+      }
+
+      .menu-toggle {
+        display: block;
+      }
+
+      .btn {
+        padding: 0.6rem 1.2rem;
+        font-size: 0.9rem;
+        margin-left: auto;
+      }
+
+      .contact-container h1 {
+        font-size: 1.8rem;
+      }
+
+      form {
+        gap: 1.2rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      header {
+        padding: 0.8rem;
+      }
+
+      .logo {
+        font-size: 1.1rem;
+      }
+
+      .btn {
+        padding: 0.5rem 1rem;
+        font-size: 0.8rem;
+      }
+
+      .menu-toggle {
+        font-size: 1.5rem;
+        padding: 0.3rem;
+      }
+
+      .profile-card {
+        padding: 1.5rem;
+      }
+
+      .profile-card h2 {
+        font-size: 1.5rem;
+      }
+
+      .contact-container h1 {
+        font-size: 1.5rem;
+        margin-bottom: 1.5rem;
+      }
+
+      input,
+      textarea {
+        padding: 0.8rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Header (Same as Landing Page) -->
+  <header>
+    <div class="logo">Portfolio</div>
+
+    <div class="nav-wrapper">
+      <nav>
+        <a href="index.html">Home</a>
+        <a href="Project.html">Projects</a>
+        <a href="skills.html">Skills</a>
+        <a href="Contact.html">Contact</a>
+      </nav>
+    </div>
+
+    <button class="btn" onclick="window.location.href='contact.html'">Let's Talk 💬</button>
+
+    <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+
+    <div class="mobile-nav" id="mobileNav">
+      <a href="index.html">Home</a>
+      <a href="Project.html">Projects</a>
+      <a href="skills.html">Skills</a>
+      <a href="Contact.html">Contact</a>
+    </div>
+  </header>
+
+  <div class="circle-glow"></div>
+
+  <!-- Main Content -->
+  <div class="main-container">
+    <div class="profile-card">
+      <img src="girl2.png" alt="Subbulakshmi" />
+      <h2>Subbulakshmi</h2>
+      <p>Graphic Designer & Frontend Developer</p>
+      <p>Tamil Nadu, India</p>
+      <div class="social-icons">
+        <a href="https://www.linkedin.com/in/subbulakshmi-b-9104562b6" title="LinkedIn">in</a>
+        <a href="mailto:subbulakshmi17012002@gmail.com" title="Email">✉</a>
+      </div>
+      <button class="btn">Let's Work Together!</button>
+    </div>
+
+    <div class="contact-container">
+      <h1>Contact Me</h1>
+      <form id="contactForm">
+        <input type="text" name="user_name" placeholder="Your Name" required />
+        <input type="email" name="user_email" placeholder="Your Email" required />
+        <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
+        <button type="submit" id="submitBtn"><span id="btnText">Send Message ✉️</span></button>
+      </form>
+
+      <div class="status-message loading-message" id="loadingMessage"><span class="spinner"></span> Sending...</div>
+      <div class="status-message success-message" id="successMessage">✓ Your message has been sent successfully.</div>
+      <div class="status-message error-message" id="errorMessage">✗ Something went wrong. Please try again.</div>
+    </div>
+  </div>
+
+  <div class="circle-glow"></div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+  <script>
+    emailjs.init("tR72G0x6VEZB9gb8-"); // Replace with your EmailJS public key
+
+    function toggleMenu() {
+      const mobileNav = document.getElementById("mobileNav");
+      mobileNav.style.display = mobileNav.style.display === "flex" ? "none" : "flex";
+    }
+
+    document.getElementById("contactForm").addEventListener("submit", function (e) {
+      e.preventDefault();
+      const form = this;
+      const btn = document.getElementById("submitBtn");
+      const btnText = document.getElementById("btnText");
+      const loadingMsg = document.getElementById("loadingMessage");
+      const successMsg = document.getElementById("successMessage");
+      const errorMsg = document.getElementById("errorMessage");
+
+      successMsg.style.display = "none";
+      errorMsg.style.display = "none";
+      loadingMsg.style.display = "block";
+      btn.disabled = true;
+      btnText.textContent = "Sending...";
+
+      emailjs.sendForm("service_0ivj9o7", "template_x6o5fee", form).then(
+        () => {
+          loadingMsg.style.display = "none";
+          successMsg.style.display = "block";
+          form.reset();
+          btnText.textContent = "Send Message ✉️";
+          btn.disabled = false;
+          setTimeout(() => (successMsg.style.display = "none"), 4000);
+        },
+        (err) => {
+          console.error("Send failed:", err);
+          loadingMsg.style.display = "none";
+          errorMsg.style.display = "block";
+          btnText.textContent = "Send Message ✉️";
+          btn.disabled = false;
+          setTimeout(() => (errorMsg.style.display = "none"), 4000);
+        }
+      );
+    });
+  </script>
+</body>
+
+</html>

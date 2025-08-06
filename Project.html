@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Projects | Subbulakshmi</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700&display=swap" rel="stylesheet" />
+    <style>
+        :root {
+            --dark-bg: #0d0d0d;
+            --light-text: #e0c8f5;
+            --accent: rgba(209, 153, 255, 0.3);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Outfit", sans-serif;
+            background: var(--dark-bg);
+            color: var(--light-text);
+            overflow-x: hidden;
+
+        }
+
+        /* Header Styles (Same as Contact Page) */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.8rem 2.3rem;
+            position: relative;
+            flex-wrap: nowrap;
+           
+        }
+
+        .logo {
+            color: #fff;
+            font-weight: 700;
+            font-size: 1.5rem;
+            white-space: nowrap;
+            /* Prevent text wrapping */
+        }
+
+        .nav-wrapper {
+            display: flex;
+            gap: 1rem;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 0.4rem;
+            border-radius: 12px;
+        }
+
+        nav {
+            display: flex;
+            gap: 1rem;
+        }
+
+        nav a {
+            color: #aaa;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1.1rem;
+            padding: 0.6rem 1rem;
+            border-radius: 8px;
+            transition: background 0.3s ease, color 0.3s ease;
+            white-space: nowrap;
+        }
+
+
+
+        .btn {
+            background: linear-gradient(90deg, #d199ff, #fab0ff);
+            padding: 0.8rem 1.8rem;
+            border: none;
+            border-radius: 30px;
+            color: #000;
+            font-weight: 600;
+            font-size: 1.1rem;
+            cursor: pointer;
+            white-space: nowrap;
+            transition: transform 0.2s ease;
+        }
+        nav a:hover {
+            background: rgba(209, 153, 255, 0.15);
+            color: #fff;
+        }
+
+
+        .btn:hover {
+            transform: scale(1.05);
+        }
+
+        .menu-toggle {
+            display: none;
+            font-size: 1.8rem;
+            color: #fff;
+            cursor: pointer;
+            padding: 0.5rem;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+        }
+
+        .mobile-nav {
+            display: none;
+            flex-direction: column;
+            gap: 1rem;
+            position: absolute;
+            top: 100%;
+            right: 2rem;
+            background: #1a1a1a;
+            border: 1px solid #333;
+            padding: 1rem;
+            border-radius: 12px;
+            z-index: 999;
+            min-width: 200px;
+        }
+
+        .mobile-nav a {
+            font-size: 1rem;
+            padding: 0.5rem;
+            color: #ccc;
+            text-decoration: none;
+        }
+
+        .mobile-nav a:hover {
+            color: #fff;
+            background: rgba(209, 153, 255, 0.1);
+        }
+
+        .circle-glow {
+            position: absolute;
+            width: 500px;
+            height: 800px;
+            background: radial-gradient(circle, #9b59b6 0%, transparent 70%);
+            top: -100px;
+            right: -150px;
+            z-index: -1;
+            filter: blur(80px);
+        }
+
+        .container {
+            padding: 4rem 10rem;
+        }
+
+        .projects-section h1 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            text-align: center;
+            background: linear-gradient(90deg, #d199ff, #fab0ff);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .section-wrapper {
+            margin-bottom: 3rem;
+        }
+
+        .section-title {
+            font-size: 1.6rem;
+            color: white;
+            margin: 1rem 0 1.5rem;
+        }
+
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+        }
+
+        .project-card {
+            background: #1a1a1a;
+            border-radius: 16px;
+            padding: 2rem;
+            border: 1px solid #333;
+            text-align: center;
+            min-height: 500px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .project-card video,
+        .project-card img {
+            width: 100%;
+            height: 270px;
+            object-fit: cover;
+            border-radius: 12px;
+            margin-bottom: 1.2rem;
+        }
+
+        .project-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .project-card p {
+            font-size: 1.05rem;
+            color: #ccc;
+            margin-bottom: 1.2rem;
+        }
+
+        .project-card .btn-group {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+            margin-top: 1rem;
+        }
+
+        .btn-group a,
+        .btn-group button {
+            background: #fab0ff;
+            color: #000;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-weight: 400;
+            text-decoration: none;
+            border: none;
+            font-size: 1rem;
+            cursor: pointer;
+        }
+
+        /* Modal Styling */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(0, 0, 0, 0.8);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background: #1a1a1a;
+            padding: 3rem;
+            border-radius: 16px;
+            max-width: 800px;
+            width: 90%;
+            color: #fff;
+            position: relative;
+        }
+
+        .modal-content img {
+            max-width: 100%;
+            max-height: 70vh;
+            object-fit: contain;
+            margin-top: 1rem;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: #fab0ff;
+            color: #000;
+            border: none;
+            padding: 0.4rem 0.8rem;
+            border-radius: 8px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .modal-content h2 {
+            margin-bottom: 1rem;
+        }
+
+        .modal-content p {
+            line-height: 1.6;
+        }
+
+        @media (max-width: 1024px) {
+            .container {
+                padding: 4rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 2rem;
+            }
+
+            .projects-section h1 {
+                font-size: 2rem;
+            }
+
+            header {
+                padding: 1rem;
+            }
+
+            .logo {
+                font-size: 1.3rem;
+            }
+
+            .nav-wrapper {
+                display: none;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+
+            .btn {
+                padding: 0.6rem 1.2rem;
+                font-size: 0.9rem;
+                margin-left: auto;
+            }
+
+            .project-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            header {
+                padding: 0.8rem;
+            }
+
+            .logo {
+                font-size: 1.1rem;
+            }
+
+            .btn {
+                padding: 0.5rem 1rem;
+                font-size: 0.8rem;
+            }
+
+            .menu-toggle {
+                font-size: 1.5rem;
+                padding: 0.3rem;
+            }
+
+            .container {
+                padding: 1.5rem;
+            }
+
+            .project-card {
+                padding: 1.5rem;
+                min-height: auto;
+            }
+
+            .project-card video,
+            .project-card img {
+                height: 200px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header with Navbar (Same as Contact Page) -->
+    <header>
+        <div class="logo">Portfolio</div>
+
+        <!-- Desktop Navigation -->
+        <div class="nav-wrapper">
+            <nav>
+                <a href="index.html">Home</a>
+                <a href="Project.html" class="active">Projects</a>
+                <a href="skills.html">Skills</a>
+                <a href="contact.html">Contact</a>
+            </nav>
+        </div>
+
+        <button class="btn" onclick="window.location.href='contact.html'">Let's Talk 💬</button>
+
+        <!-- Mobile Navigation Toggle -->
+        <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+
+        <!-- Mobile Navigation Menu -->
+        <div class="mobile-nav" id="mobileNav">
+            <a href="index.html">Home</a>
+            <a href="Project.html" class="active">Projects</a>
+            <a href="skills.html">Skills</a>
+            <a href="contact.html">Contact</a>
+        </div>
+    </header>
+
+    <div class="circle-glow"></div>
+
+    <div class="container">
+        <div class="projects-section">
+            <h1>My Projects</h1>
+
+            <div class="section-wrapper">
+                <div class="section-title">UI/UX Designs</div>
+                <div class="project-grid">
+                    <div class="project-card">
+                        <video src="Screen Recording 2025-07-31 125132.mp4" controls></video>
+                        <h3>Pizza Hub</h3>
+                        <p>Pizza Delivery site .</p>
+                        <div class="btn-group">
+                            <a href="https://preview--pizzahub-perfect-replica-in.lovable.app/" target="_blank">View
+                                Demo</a>
+                            <button onclick="openModal('Pizza Hub',`This project is a frontend clone of a pizza ordering website, inspired by clean UI and real-world food delivery platforms.\n
+                            ✅ A modern homepage layout\n
+                            ✅ Clean navigation & category sections\n
+                            ✅ Eye-catching food cards and CTAs\n
+                            ✅ Mobile-friendly responsive design\n
+                            🛠️ Built with: React.js • HTML • CSS\n
+                            🎯 Goal: To practice real-world UI replication and strengthen frontend development skills.`
+                            )">
+                                Learn More
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <video src="Screen Recording 2025-08-02 123310.mp4" controls></video>
+                        <h3>Vidhyalaya</h3>
+                        <p>School Marketing Site Created using AI</p>
+                        <div class="btn-group">
+                            <a href="https://preview--vidhyalaya-digital-campus-hub.lovable.app/" target="_blank">View
+                                Demo</a>
+                            <button
+                                onclick="openModal('Vidhyalaya',`This project is a frontend design for a digital campus platform, crafted to provide a smooth and informative experience for students, staff, and institutions.
+                                 The goal was to create a modern, clean layout that balances usability with a professional academic look.\n
+                                💡 Key Features:\n
+                                ✅ Hero section with a clear value message\n
+                                ✅ Course highlights and academic sections\n
+                                ✅ Easy navigation and structured layout\n 
+                                ✅ Fully responsive across all devices\n
+                                🛠️ Built with: React.js • HTML • CSS\n 
+                                🎯 Focus: UI/UX clarity, education-themed design, and component-based frontend structure.`
+                                )">
+                                Learn More
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section-wrapper">
+                <div class="section-title">Illustrator</div>
+                <div class="project-grid">
+                    <div class="project-card">
+                        <img src="wm copy.svg" alt="3D Watermelon" />
+                        <h3>Watermelon</h3>
+                        <p>A vibrant watermelon slice illustration</p>
+                        <div class="btn-group">
+                            <a onclick="openImageModal('wm copy.svg')">View</a>
+                            <button
+                                onclick="openModal('3D Watermelon', `Designed in Adobe Illustrator using 3D tools. This playful object features smooth shading, reflections, and soft shadows for a realistic feel.\n
+                                🍉 Design Subject: A vibrant watermelon slice illustration.
+                                🛠️ Tool Used: Created in Adobe Illustrator using vector tools and shape layers.\n
+                                🎨 Design Style: Bright, playful, and minimal — with bold colors and clean edges.\n
+                                ✏️ Techniques: Used pen tool, ellipse tool, and pathfinder to shape the fruit and seeds.\n
+                                🌈 Colors: Rich green for the rind, soft pink-red for the flesh, and dark seeds for contrast.\n
+                                💡 Effects: Added simple shadows and highlights for a fresh, slightly dimensional look.\n
+                                📁 Format: Exported as an SVG, making it ideal for responsive web and print use.\n
+                                📌 Purpose: Perfect for food illustrations, summer-themed designs, kids graphics, or icon sets.`
+                                )">
+                                Learn More
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <img src="cup copy.svg" alt="3D Cup" />
+                        <h3>Coffee Cup</h3>
+                        <p>A stylized coffee cup illustration</p>
+                        <div class="btn-group">
+                            <a onclick="openImageModal('cup copy.svg')">View</a>
+                            <button
+                                onclick="openModal('3D Coffe Cup', `Created using 3D effects in Illustrator to simulate realistic lighting and volume for branding mockups.\n
+                                    ☕ Design Subject: A stylized coffee cup illustration.\n
+                                    🛠️ Tool Used: Created in Adobe Illustrator using vector shapes and layer.\n
+                                    🎨 Design Style: Clean, minimal, and modern — ideal for branding or digital content.\n
+                                    ✏️ Techniques: Used pen tool, shape builder, and gradient fills for highlights and shadows.\n
+                                    🌗 Effects: Subtle shadowing and highlighting give the cup a soft 3D feel.\n
+                                    📁 Format: Exported as an SVG, ensuring scalability and crisp quality on all screen sizes.\n
+                                    📌 Purpose: Suitable for product mockups, café branding, mobile app icons, or creative visuals.`
+                                )">
+                                Learn More
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <img src="3D copy.svg" alt="3D Doll" />
+                        <h3>Doll</h3>
+                        <p>Doll design with realistic textures.</p>
+                        <div class="btn-group">
+                            <a onclick="openImageModal('3D copy.svg')">View</a>
+                            <button
+                                onclick="openModal('3D Doll', `This artwork is a 3D-style doll illustration created using Adobe Illustrator. It combines playful and dynamic shapes with smooth gradients and perspective depth, giving it a stylized, dimensional look.The use of shading and perspective makes flat elements appear more lifelike and engaging.\n
+                                 🛠️ Tool Used: Created using Adobe Illustrators 3D & Materials panel.\n
+                                 🎨 Design Style: Features playful, dimensional shapes with a clean and modern look.\n
+                                 ✨ Effects Applied: Used extrude, bevel, lighting, and shadows for depth.\n
+                                 🌈 Color & Texture: Smooth gradients and subtle shading enhance the 3D feel.\n
+                                 📁 Format: Exported as an SVG for high-quality, scalable design.\n
+                                 📌 Purpose: Suitable for branding assets, digital content, creative posts, or presentations.`
+                                 )">
+                                Learn More
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <img src="Anandlogo.svg" alt="Logo Design" />
+                        <h3>Logo</h3>
+                        <p>Logo design with depth and perspective.</p>
+                        <div class="btn-group">
+                            <a onclick="openImageModal('Anandlogo.svg')">View</a>
+                            <button
+                                onclick="openModal('Logo', `⚡ Logo Purpose: Created for an electrical service or utility app, representing power, energy, and connectivity.\n
+                                🛠️ Tool Used: Designed using Adobe Illustrator with vector precision.\n
+                                🎨 Design Style: Modern and minimal with a tech-inspired look, ensuring clarity and impact.\n
+                                ⚙️ Elements: Likely includes electric symbols like bolts, wires, or switch shapes to convey its function instantly.\n
+                                💡 Color Usage: Uses high-contrast and energetic colors to reflect electricity and innovation.\n
+                                📱 App Ready: Clean and scalable, ideal for mobile app icons, splash screens, and branding.`
+                              )">
+                                Learn More
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section-wrapper">
+                <div class="section-title">Photoshop</div>
+                <div class="project-grid">
+                    <div class="project-card">
+                        <img src="POSTER (1) copy.png" alt="3D Watermelon" />
+                        <h3>Advertisment Poster</h3>
+                        <p>Realistic 3D Watermelon object made in Illustrator.</p>
+                        <div class="btn-group">
+                            <a onclick="openImageModal('POSTER (1) copy.png')">View</a>
+                            <button
+                                onclick="openModal('Advertisment Poster', `This dynamic Photoshop poster captures the excitement of a Soccer Match Night with bold typography and striking visual effects.\n 
+                                🎨 Design Highlights:\n
+                                ⚡ High-energy action shot of a soccer player in motion.\n
+                                🔥 Fiery gradient background creates intensity and movement.\n
+                                ✍️ Bold and modern typography for event name and details.\n
+                                🖌️ Photoshop techniques like lighting, blending, and shadowing.\n
+                                ⚽ Sports theme design, perfect for attracting fans and athletes.\n
+                                📸 Combines photography and digital effects for a professional look.`
+                                )">
+                                Learn More
+                            </button>
+                        </div>
+                    </div>
+
+
+                    <div class="project-card">
+                        <img src="reflection.png" alt="Logo Design" />
+                        <h3>Shadow Box</h3>
+                        <p>Box Shadow & Reflection</p>
+                        <div class="btn-group">
+                            <a onclick="openImageModal('reflection.png')">View</a>
+                            <button
+                                onclick="openModal('Box Shadow & Reflection', `Cardboard box placed on a reflective surface.\n
+                                    🌑 Shadow Effect\n
+                                    🧭 Direction: Cast to the left and slightly behind, indicating a light source from the top-right.\n
+                                    🖌️ Method: Likely created using Layer Style > Drop Shadow or a manually drawn blurred black shape.\n
+                                    🌫️ Style: Soft edges and low opacity for a natural look.\n
+                                 
+                                    💧 Reflection Effect\n
+                                    🔁 Duplicate Layer: Box layer duplicated and flipped vertically.\n
+                                    🪞 Positioning: Placed directly below the original to mimic real-life reflection.\n
+                                    🎚️ Fading: Used a layer mask + gradient tool to gently fade the reflection.\n
+                                    👁️ Opacity: Lowered to give a subtle, glass-like surface effect.\n
+
+                                    🎨 Background & Lighting\n
+                                    🌀 Gradient Background: Light-to-dark gray gradient adds depth.\n
+                                    ✨ Clean Lighting: No clutter, making the object and its effects stand out.`
+                                   
+                                )">
+                                Learn More
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="circle-glow"></div>
+
+
+
+        </div>
+    </div>
+
+    <!-- Project Description Modal -->
+    <div id="projectModal" class="modal">
+        <div class="modal-content">
+            <button class="close-btn" onclick="closeModal()">✕</button>
+            <h2 id="modalTitle">Project Title</h2>
+            <p id="modalDescription">Project description goes here.</p>
+        </div>
+    </div>
+
+    <!-- Image View Modal -->
+    <div id="imageModal" class="modal">
+        <div class="modal-content">
+            <button class="close-btn" onclick="closeImageModal()">✕</button>
+            <img id="modalImage" src="" alt="Project Image" />
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+        function toggleMenu() {
+            const mobileNav = document.getElementById("mobileNav");
+            mobileNav.style.display = mobileNav.style.display === "flex" ? "none" : "flex";
+        }
+
+        function openModal(title, description) {
+            document.getElementById("modalTitle").innerText = title;
+            document.getElementById("modalDescription").innerText = description;
+            document.getElementById("projectModal").style.display = "flex";
+        }
+
+        function closeModal() {
+            document.getElementById("projectModal").style.display = "none";
+        }
+
+        function openImageModal(imageSrc) {
+            const modalImg = document.getElementById("modalImage");
+            modalImg.src = imageSrc;
+            document.getElementById("imageModal").style.display = "flex";
+        }
+
+        function closeImageModal() {
+            document.getElementById("imageModal").style.display = "none";
+        }
+
+        window.onclick = function (event) {
+            const projectModal = document.getElementById("projectModal");
+            const imageModal = document.getElementById("imageModal");
+
+            if (event.target === projectModal) {
+                projectModal.style.display = "none";
+            }
+            if (event.target === imageModal) {
+                imageModal.style.display = "none";
+            }
+        };
+    </script>
+</body>
+
+</html>

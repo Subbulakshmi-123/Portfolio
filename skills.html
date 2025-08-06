@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Subbulakshmi | Skills</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700&display=swap" rel="stylesheet" />
+    <style>
+        :root {
+            --dark-bg: #0d0d0d;
+            --light-text: #e0c8f5;
+            --accent: rgba(209, 153, 255, 0.3);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background: #0d0d0d;
+            color: #e0c8f5;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 2rem 2rem;
+            position: relative;
+            flex-wrap: nowrap;
+        }
+
+
+        .logo {
+            color: #fff;
+            font-weight: 700;
+            font-size: 1.6rem;
+            white-space: nowrap;
+            /* Prevent text wrapping */
+        }
+
+        .nav-wrapper {
+            display: flex;
+            gap: 1rem;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 0.5rem;
+            border-radius: 12px;
+        }
+
+        .nav-wrapper:hover {
+            background: rgba(209, 153, 255, 0.1);
+        }
+
+        nav {
+            display: flex;
+            gap: 1rem;
+
+        }
+
+        nav a {
+            color: #aaa;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1.2rem;
+            padding: 0.6rem 1rem;
+            border-radius: 8px;
+            transition: background 0.3s ease, color 0.3s ease;
+        }
+
+        nav a:hover {
+            background: rgba(209, 153, 255, 0.15);
+            color: #fff;
+        }
+
+
+        .btn {
+            background: linear-gradient(90deg, #d199ff, #fab0ff);
+            padding: 0.8rem 1.8rem;
+            border: none;
+            border-radius: 30px;
+            color: #000;
+            font-weight: 600;
+            font-size: 1.1rem;
+            cursor: pointer;
+            white-space: nowrap;
+            transition: transform 0.2s ease;
+        }
+
+        .btn:hover {
+            transform: scale(1.05);
+        }
+
+        .circle-glow {
+            position: absolute;
+            width: 500px;
+            height: 800px;
+            background: radial-gradient(circle, #9b59b6 0%, transparent 70%);
+            top: -100px;
+            right: -150px;
+            z-index: -1;
+            filter: blur(80px);
+        }
+
+        .menu-toggle {
+            display: none;
+            font-size: 1.8rem;
+            color: #fff;
+            cursor: pointer;
+            padding: 0.5rem;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+        }
+
+        .mobile-nav {
+            display: none;
+            flex-direction: column;
+            gap: 1rem;
+            position: absolute;
+            top: 100%;
+            right: 2rem;
+            background: #1a1a1a;
+            border: 1px solid #333;
+            padding: 1rem;
+            border-radius: 12px;
+            z-index: 999;
+            min-width: 200px;
+        }
+
+        .mobile-nav a {
+            font-size: 1rem;
+            padding: 0.5rem;
+            color: #ccc;
+            text-decoration: none;
+        }
+
+        .mobile-nav a:hover {
+            color: #fff;
+            background: rgba(209, 153, 255, 0.1);
+
+        }
+
+        
+
+        .container {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 4rem;
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 3rem 4rem;
+            align-items: center;
+        }
+
+
+        .main-title {
+            text-align: center;
+            font-size: clamp(2rem, 5vw, 3rem);
+            margin: 2rem 0;
+            background: linear-gradient(90deg, #d199ff, #fab0ff);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            font-weight: 700;
+            padding: 0 1rem;
+        }
+
+        .skills-container {
+            display: flex;
+            flex-direction: row;
+            gap: 2rem;
+            padding: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: flex-start;
+            margin-top: 6rem;
+       
+        }
+
+        .skill-category {
+            position: relative;
+            width: 48%;
+            height: 550px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            padding: 1rem;
+            margin-top: -5rem;
+        }
+
+        .category-title {
+            text-align: center;
+            font-size: clamp(1.5rem, 3vw, 2rem);
+            margin-bottom: 4rem;
+            color: #fff;
+        }
+
+        .category-core {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: 700;
+            font-size: 1.3rem;
+            z-index: 2;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .development-core {
+            background: radial-gradient(circle, #ffd700 0%, #ff8c00 70%);
+            box-shadow: 0 0 30px #ff8c00;
+            color: #000;
+        }
+
+        .design-core {
+            background: radial-gradient(circle, #9370db 0%, #663399 70%);
+            box-shadow: 0 0 30px #9370db;
+            color: #fff;
+        }
+
+        .orbit-container {
+            position: relative;
+            width: 350px;
+            height: 350px;
+        }
+
+        .skill-node {
+            width: 90px;
+            height: 90px;
+            border-radius: 50%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: #1a1a1a;
+            position: absolute;
+            animation: rotateNode 10s linear infinite;
+            transform-origin: center center;
+            margin-left: 8rem;
+            margin-top: 9rem;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .skill-node:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 25px rgba(255, 255, 255, 0.3);
+        }
+
+        .development-node {
+            box-shadow: 0 0 15px rgba(255, 215, 0, 0.5);
+            border: 1px solid rgba(255, 215, 0, 0.3);
+        }
+
+        .design-node {
+            box-shadow: 0 0 15px rgba(147, 112, 219, 0.5);
+            border: 1px solid rgba(147, 112, 219, 0.3);
+        }
+
+        @keyframes rotateNode {
+            0% {
+                transform: rotate(0deg) translateX(175px) rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg) translateX(175px) rotate(-360deg);
+            }
+        }
+
+        .skill-icon {
+            width: 35px;
+            height: 35px;
+            object-fit: contain;
+            margin-bottom: 0.5rem;
+        }
+
+        .skill-node h3 {
+            font-size: 0.8rem;
+            color: #fff;
+            text-align: center;
+        }
+
+        @media (max-width: 1024px) {
+            .container {
+                grid-template-columns: 1fr;
+                padding: 2rem;
+                gap: 3rem;
+            }
+
+            .btn {
+                font-size: 1rem;
+            }
+
+            .skill-category {
+                width: 100%;
+                margin-top: 0;
+                height: auto;
+                margin-bottom: 4rem;
+            }
+
+            .orbit-container {
+                margin: 2rem auto;
+            }
+        }
+
+        @media (max-width: 768px) {
+            header {
+                padding: 1rem;
+            }
+
+            .logo {
+                font-size: 1.3rem;
+            }
+
+            .nav-wrapper {
+                display: none;
+            }
+
+            .btn {
+                padding: 0.6rem 1.2rem;
+                font-size: 0.9rem;
+                margin-left: auto;
+                /* Push to the right */
+            }
+
+            .menu-toggle {
+                display: block;
+
+            }
+
+            .skills-container {
+                padding: 1rem;
+                flex-direction: column;
+            }
+
+            .skill-category {
+                width: 100%;
+                height: auto;
+                padding: 0.5rem;
+                margin-bottom: 3rem;
+            }
+
+            .orbit-container {
+                width: 280px;
+                height: 280px;
+            }
+
+            .skill-node {
+                width: 70px;
+                height: 70px;
+                margin-left: 6.5rem;
+                margin-top: 7rem;
+            }
+
+            @keyframes rotateNode {
+                0% {
+                    transform: rotate(0deg) translateX(140px) rotate(0deg);
+                }
+
+                100% {
+                    transform: rotate(360deg) translateX(140px) rotate(-360deg);
+                }
+            }
+
+            .category-core {
+                width: 100px;
+                height: 100px;
+                font-size: 1.1rem;
+            }
+
+            .skill-icon {
+                width: 25px;
+                height: 25px;
+            }
+
+            .skill-node h3 {
+                font-size: 0.7rem;
+            }
+
+            .circle-glow {
+                width: 300px;
+                height: 500px;
+                top: -50px;
+                right: -100px;
+                filter: blur(60px);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .orbit-container {
+                width: 240px;
+                height: 240px;
+            }
+
+            .skill-node {
+                width: 60px;
+                height: 60px;
+                margin-left: 5.5rem;
+                margin-top: 6rem;
+            }
+
+            @keyframes rotateNode {
+                0% {
+                    transform: rotate(0deg) translateX(120px) rotate(0deg);
+                }
+
+                100% {
+                    transform: rotate(360deg) translateX(120px) rotate(-360deg);
+                }
+            }
+
+            .category-title {
+                margin-bottom: 3rem;
+            }
+
+            .category-core {
+                width: 80px;
+                height: 80px;
+                font-size: 1rem;
+            }
+
+            .menu-toggle {
+                font-size: 1.5rem;
+                padding: 0.3rem;
+            }
+
+            .skill-icon {
+                width: 20px;
+                height: 20px;
+            }
+
+            .skill-node h3 {
+                font-size: 0.6rem;
+            }
+
+            .mobile-nav {
+                left: 1rem;
+                right: 1rem;
+            }
+
+            header {
+                padding: 0.8rem;
+            }
+
+            .logo {
+                font-size: 1.1rem;
+            }
+
+            .btn {
+                padding: 0.5rem 1rem;
+                font-size: 0.8rem;
+            }
+
+
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+
+        <div class="logo">Portfolio</div>
+
+        <div class="nav-wrapper">
+            <nav>
+                <a href="index.html">Home</a>
+                <a href="Project.html">Projects</a>
+                <a href="skills.html" class="active">Skills</a>
+                <a href="Contact.html">Contact</a>
+            </nav>
+        </div>
+
+
+        <button class="btn" onclick="window.location.href='contact.html'">Let's Talk 💬</button>
+        <!-- Mobile Toggle -->
+        <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+
+        <!-- Mobile Nav -->
+        <div class="mobile-nav" id="mobileNav">
+            <a href="index.html">Home</a>
+            <a href="Project.html">Projects</a>
+            <a href="skills.html">Skills</a>
+            <a href="contact.html">Contact</a>
+        </div>
+
+    </header>
+
+    <div class="circle-glow"></div>
+    <h1 class="main-title">My Skills</h1>
+
+    <div class="skills-container">
+
+        <!-- Development Skills -->
+        <div class="skill-category">
+            <h2 class="category-title">Development</h2>
+            <div class="orbit-container">
+                <div class="category-core development-core">DEV</div>
+
+                <!-- Development Nodes -->
+                <div class="skill-node development-node" style="animation-delay: 0s;">
+                    <img src="image copy.png" alt="HTML5" class="skill-icon" />
+                    <h3>HTML5</h3>
+                </div>
+                <div class="skill-node development-node" style="animation-delay: -1.5s;">
+                    <img src="image copy 2.png" alt="CSS3" class="skill-icon" />
+                    <h3>CSS3</h3>
+                </div>
+                <div class="skill-node development-node" style="animation-delay: -3s;">
+                    <img src="image copy 3.png" alt="JavaScript" class="skill-icon" />
+                    <h3>JavaScript</h3>
+                </div>
+                <div class="skill-node development-node" style="animation-delay: -4.5s;">
+                    <img src="image copy 14.png" alt="C" class="skill-icon" />
+                    <h3>C</h3>
+                </div>
+                <div class="skill-node development-node" style="animation-delay: -6s;">
+                    <img src="image copy 4.png" alt="React.js" class="skill-icon" />
+                    <h3>React.js</h3>
+                </div>
+                <div class="skill-node development-node" style="animation-delay: -7.5s;">
+                    <img src="image copy 10.png" alt="Python" class="skill-icon" />
+                    <h3>Python</h3>
+                </div>
+                <div class="skill-node development-node" style="animation-delay: -9s;">
+                    <img src="image copy 13.png" alt="MySQL" class="skill-icon" />
+                    <h3>MySQL</h3>
+                </div>
+            </div>
+        </div>
+        <div class="circle-glow"></div>
+        <!-- Design Skills -->
+        <div class="skill-category">
+            <h2 class="category-title">Design</h2>
+            <div class="orbit-container">
+                <div class="category-core design-core">DESIGN</div>
+
+                <!-- Design Nodes -->
+                <div class="skill-node design-node" style="animation-delay: 0s;">
+                    <img src="image copy 5.png" alt="Figma" class="skill-icon" />
+                    <h3>Figma</h3>
+                </div>
+                <div class="skill-node design-node" style="animation-delay: -1.5s;">
+                    <img src="image copy 6.png" alt="Photoshop" class="skill-icon" />
+                    <h3>Photoshop</h3>
+                </div>
+                <div class="skill-node design-node" style="animation-delay: -3s;">
+                    <img src="image copy 7.png" alt="Illustrator" class="skill-icon" />
+                    <h3>Illustrator</h3>
+                </div>
+                <div class="skill-node design-node" style="animation-delay: -4.5s;">
+                    <img src="image copy 8.png" alt="Premiere Pro" class="skill-icon" />
+                    <h3>Premiere Pro</h3>
+                </div>
+                <div class="skill-node design-node" style="animation-delay: -6s;">
+                    <img src="image copy 9.png" alt="After Effects" class="skill-icon" />
+                    <h3>After Effects</h3>
+                </div>
+                <div class="skill-node design-node" style="animation-delay: -7.5s;">
+                    <img src="image copy 12.png" alt="Wix" class="skill-icon" />
+                    <h3>Wix</h3>
+                </div>
+                <div class="skill-node design-node" style="animation-delay: -9s;">
+                    <img src="image copy 11.png" alt="Webflow" class="skill-icon" />
+                    <h3>Webflow</h3>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+
+    <script>
+        function toggleMenu() {
+            const mobileNav = document.getElementById("mobileNav");
+            mobileNav.style.display = mobileNav.style.display === "flex" ? "none" : "flex";
+        }
+    </script>
+</body>
+
+</html>

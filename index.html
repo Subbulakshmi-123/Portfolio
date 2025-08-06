@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Subbulakshmi | Digital Designer</title>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --dark-bg: #0d0d0d;
+      --light-text: #e0c8f5;
+      --accent: rgba(209, 153, 255, 0.3);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: "Outfit", sans-serif;
+      background: var(--dark-bg);
+      color: var(--light-text);
+      overflow-x: hidden;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 2rem 2rem;
+      position: relative;
+      flex-wrap: nowrap;
+    }
+
+    .logo {
+      color: #fff;
+      font-weight: 700;
+      font-size: 1.6rem;
+      white-space: nowrap;
+      /* Prevent text wrapping */
+    }
+
+    .nav-wrapper {
+      display: flex;
+      gap: 1rem;
+      background: rgba(255, 255, 255, 0.05);
+      padding: 0.5rem;
+      border-radius: 12px;
+    }
+
+    nav {
+      display: flex;
+      gap: 1rem;
+    }
+
+    nav a {
+      color: #aaa;
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 1.2rem;
+      padding: 0.6rem 1rem;
+      border-radius: 8px;
+      transition: background 0.3s ease, color 0.3s ease;
+    }
+
+    nav a:hover {
+      background: rgba(209, 153, 255, 0.15);
+      color: #fff;
+    }
+
+    .btn:hover {
+      transform: scale(1.05);
+    }
+
+
+    .btn {
+      background: linear-gradient(90deg, #d199ff, #fab0ff);
+      padding: 0.8rem 1.8rem;
+      border: none;
+      border-radius: 30px;
+      color: #000;
+      font-weight: 600;
+      font-size: 1.1rem;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: transform 0.2s ease;
+    }
+
+    .btn:hover {
+      transform: scale(1.05);
+    }
+
+    .menu-toggle {
+      display: none;
+      font-size: 1.8rem;
+      color: #fff;
+      cursor: pointer;
+      padding: 0.5rem;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 8px;
+    }
+
+    .mobile-nav {
+      display: none;
+      flex-direction: column;
+      gap: 1rem;
+      position: absolute;
+      top: 100%;
+      right: 2rem;
+      background: #1a1a1a;
+      border: 1px solid #333;
+      padding: 1rem;
+      border-radius: 12px;
+      z-index: 999;
+      min-width: 200px;
+    }
+
+    .mobile-nav a {
+      font-size: 1rem;
+      padding: 0.5rem;
+      color: #ccc;
+      text-decoration: none;
+    }
+
+    .mobile-nav a:hover {
+      color: #fff;
+      background: rgba(209, 153, 255, 0.1);
+    }
+
+    .container {
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: 4rem;
+      max-width: 1300px;
+      margin: 0 auto;
+      padding: 3rem 4rem;
+      align-items: center;
+    }
+
+    .profile-card {
+      background: #1a1a1a;
+      padding: 2.5rem;
+      border-radius: 24px;
+      text-align: center;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    }
+
+    .profile-card img {
+      width: 100%;
+      max-width: 280px;
+      border-radius: 20px;
+      margin-bottom: 1.2rem;
+      border: 3px solid var(--accent);
+    }
+
+    .profile-card h2 {
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .profile-card p {
+      font-size: 1.1rem;
+      color: #ccc;
+      margin-bottom: 0.4rem;
+    }
+
+    .social-icons {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin: 1rem 0;
+    }
+
+    .social-icons a {
+      color: #fff;
+      text-decoration: none;
+      font-size: 1.2rem;
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      background: rgba(209, 153, 255, 0.1);
+      transition: all 0.3s ease;
+    }
+
+    .social-icons a:hover {
+      background: rgba(209, 153, 255, 0.3);
+      transform: translateY(-3px);
+    }
+
+    .intro {
+      max-width: 100%;
+    }
+
+    .intro h1 {
+      font-size: 3rem;
+      line-height: 1.5;
+      margin-bottom: 2rem;
+    }
+
+    .intro p {
+      font-size: 1.4rem;
+      color: #ccc;
+      margin-bottom: 2.5rem;
+    }
+
+    .intro .buttons {
+      display: flex;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+      margin-top: 3rem;
+    }
+
+    .circle-glow {
+      position: absolute;
+      width: 500px;
+      height: 800px;
+      background: radial-gradient(circle, #9b59b6 0%, transparent 70%);
+      top: -100px;
+      right: -150px;
+      z-index: -1;
+      filter: blur(80px);
+    }
+
+    @media (max-width: 1024px) {
+      .container {
+        grid-template-columns: 1fr;
+        padding: 2rem;
+        gap: 3rem;
+      }
+
+      .intro h1 {
+        font-size: 2.3rem;
+      }
+
+      .btn {
+        font-size: 1rem;
+      }
+    }
+
+    @media (max-width: 768px) {
+      header {
+        padding: 1rem;
+      }
+
+      .logo {
+        font-size: 1.3rem;
+      }
+
+      .nav-wrapper {
+        display: none;
+      }
+
+      .menu-toggle {
+        display: block;
+      }
+
+      .btn {
+        padding: 0.6rem 1.2rem;
+        font-size: 0.9rem;
+        margin-left: auto;
+        /* Push to the right */
+      }
+
+      .profile-card,
+      .intro {
+        width: 100%;
+      }
+
+      .intro h1 {
+        font-size: 2rem;
+      }
+
+      .intro p {
+        font-size: 1.1rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      header {
+        padding: 0.8rem;
+      }
+
+      .logo {
+        font-size: 1.1rem;
+      }
+
+      .btn {
+        padding: 0.5rem 1rem;
+        font-size: 0.8rem;
+      }
+
+      .menu-toggle {
+        font-size: 1.5rem;
+        padding: 0.3rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="logo">Portfolio</div>
+
+    <div class="nav-wrapper">
+      <nav>
+        <a href="index.html">Home</a>
+        <a href="Project.html">Projects</a>
+        <a href="skills.html">Skills</a>
+        <a href="Contact.html">Contact</a>
+      </nav>
+    </div>
+
+    <button class="btn" onclick="window.location.href='contact.html'">Let's Talk 💬</button>
+
+    <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+
+    <div class="mobile-nav" id="mobileNav">
+      <a href="index.html">Home</a>
+      <a href="Project.html">Projects</a>
+      <a href="skills.html">Skills</a>
+      <a href="Contact.html">Contact</a>
+    </div>
+  </header>
+
+  <div class="circle-glow"></div>
+
+  <div class="container">
+    <div class="profile-card">
+      <img src="girl2.png" alt="Subbulakshmi" />
+      <h2>Subbulakshmi</h2>
+      <p>Graphic Designer & Frontend Developer</p>
+      <p>Tamil Nadu, India</p>
+      <div class="social-icons">
+        <a href="https://www.linkedin.com/in/subbulakshmi-b-9104562b6" title="LinkedIn">in</a>
+        <a href="mailto:subbulakshmi17012002@gmail.com" title="Email">✉</a>
+      </div>
+      <button class="btn">Let's Work Together!</button>
+    </div>
+
+    <div class="intro">
+      <button class="btn" style="background: #333; color: #fff; border: 1px solid #666; margin-bottom: 2rem;">
+        Let's meet!
+      </button>
+
+      <h1>
+        I'm Subbulakshmi.<br />
+        Turning creative ideas into stunning visuals and functional code that delights users and delivers results.
+      </h1>
+
+      <div class="buttons">
+        <button class="btn" onclick="window.location.href='project.html'"
+          style="background: #1a1a1a; color: #fff; border: 1px solid #555;">
+          My Works 💼
+        </button>
+        <a href="Subbulakshmi-CV.pdf" download class="btn" style="text-decoration: none;">
+          Download CV ⬇️
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class="circle-glow"></div>
+
+  <script>
+    function toggleMenu() {
+      const mobileNav = document.getElementById("mobileNav");
+      mobileNav.style.display = mobileNav.style.display === "flex" ? "none" : "flex";
+    }
+  </script>
+</body>
+
+</html>
