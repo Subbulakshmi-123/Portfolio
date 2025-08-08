@@ -123,7 +123,7 @@
             gap: 1rem;
             position: absolute;
             top: 100%;
-            right: 2rem;
+            right: 1rem;
             background: #1a1a1a;
             border: 1px solid #333;
             padding: 1rem;
@@ -142,10 +142,8 @@
         .mobile-nav a:hover {
             color: #fff;
             background: rgba(209, 153, 255, 0.1);
-
         }
 
-        
 
         .container {
             display: grid;
@@ -180,8 +178,6 @@
             flex-wrap: wrap;
             justify-content: center;
             align-items: flex-start;
-            margin-top: 6rem;
-       
         }
 
         .skill-category {
@@ -446,8 +442,12 @@
             }
 
             .mobile-nav {
-                left: 1rem;
+                
                 right: 1rem;
+             
+                /* This will make it full width with 1rem margin on both sides */
+                max-width: none;
+                /* Remove any max-width restrictions */
             }
 
             header {
@@ -589,6 +589,5 @@
         }
     </script>
 </body>
-
 
 </html>
