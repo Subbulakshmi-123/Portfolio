@@ -35,7 +35,7 @@
             padding: 1.8rem 2.3rem;
             position: relative;
             flex-wrap: nowrap;
-           
+
         }
 
         .logo {
@@ -84,6 +84,7 @@
             white-space: nowrap;
             transition: transform 0.2s ease;
         }
+
         nav a:hover {
             background: rgba(209, 153, 255, 0.15);
             color: #fff;
@@ -229,24 +230,28 @@
         .modal {
             display: none;
             position: fixed;
-            z-index: 1000;
+            z-index: 999;
             left: 0;
             top: 0;
-            width: 100vw;
-            height: 100vh;
-            background: rgba(0, 0, 0, 0.8);
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.6);
             justify-content: center;
             align-items: center;
+            padding: 10px;
+            /* Add padding for small screens */
+            box-sizing: border-box;
         }
 
         .modal-content {
-            background: #1a1a1a;
-            padding: 3rem;
-            border-radius: 16px;
-            max-width: 800px;
-            width: 90%;
-            color: #fff;
+            background-color: #333;
+            padding: 20px;
             position: relative;
+            border-radius: 10px;
+            max-width: 600px;
+            width: 100%;
+            /* Full width on small devices */
+            box-sizing: border-box;
         }
 
         .modal-content img {
@@ -258,19 +263,20 @@
 
         .close-btn {
             position: absolute;
-            top: 1rem;
-            right: 1rem;
-            background: #fab0ff;
-            color: #000;
+            top: 12px;
+            right: 12px;
+            background: none;
             border: none;
-            padding: 0.4rem 0.8rem;
-            border-radius: 8px;
+            font-size: 24px;
             font-weight: bold;
+            color: #333;
             cursor: pointer;
+            z-index: 1000;
         }
 
+
         .modal-content h2 {
-            margin-bottom: 1rem;
+             font-size: 20px;
         }
 
         .modal-content p {
@@ -370,7 +376,7 @@
             </nav>
         </div>
 
-        <button class="btn" onclick="window.location.href='contact.html'">Let's Talk 💬</button>
+        <button class="btn" onclick="window.location.href='Contact.html'">Let's Talk 💬</button>
 
         <!-- Mobile Navigation Toggle -->
         <div class="menu-toggle" onclick="toggleMenu()">☰</div>
@@ -380,7 +386,7 @@
             <a href="index.html">Home</a>
             <a href="Project.html" class="active">Projects</a>
             <a href="skills.html">Skills</a>
-            <a href="contact.html">Contact</a>
+            <a href="Contact.html">Contact</a>
         </div>
     </header>
 
@@ -420,15 +426,14 @@
                         <div class="btn-group">
                             <a href="https://preview--vidhyalaya-digital-campus-hub.lovable.app/" target="_blank">View
                                 Demo</a>
-                            <button
-                                onclick="openModal('Vidhyalaya',`This project is a frontend design for a digital campus platform, crafted to provide a smooth and informative experience for students, staff, and institutions.
+                            <button onclick="openModal('Vidhyalaya',`This project is a frontend design for a digital campus platform, crafted to provide a smooth and informative experience for students, staff, and institutions.\n
                                  The goal was to create a modern, clean layout that balances usability with a professional academic look.\n
                                 💡 Key Features:\n
-                                ✅ Hero section with a clear value message\n
-                                ✅ Course highlights and academic sections\n
-                                ✅ Easy navigation and structured layout\n 
-                                ✅ Fully responsive across all devices\n
-                                🛠️ Built with: React.js • HTML • CSS\n 
+                                ✅ Hero section with a clear value message.\n
+                                ✅ Course highlights and academic sections.\n
+                                ✅ Easy navigation and structured layout.\n 
+                                ✅ Fully responsive across all devices.\n
+                                🛠️ Built with: React.js • HTML • CSS.\n 
                                 🎯 Focus: UI/UX clarity, education-themed design, and component-based frontend structure.`
                                 )">
                                 Learn More
@@ -447,8 +452,7 @@
                         <p>A vibrant watermelon slice illustration</p>
                         <div class="btn-group">
                             <a onclick="openImageModal('wm copy.svg')">View</a>
-                            <button
-                                onclick="openModal('3D Watermelon', `Designed in Adobe Illustrator using 3D tools. This playful object features smooth shading, reflections, and soft shadows for a realistic feel.\n
+                            <button onclick="openModal('3D Watermelon', `Designed in Adobe Illustrator using 3D tools. This playful object features smooth shading, reflections, and soft shadows for a realistic feel.\n
                                 🍉 Design Subject: A vibrant watermelon slice illustration.
                                 🛠️ Tool Used: Created in Adobe Illustrator using vector tools and shape layers.\n
                                 🎨 Design Style: Bright, playful, and minimal — with bold colors and clean edges.\n
@@ -469,8 +473,7 @@
                         <p>A stylized coffee cup illustration</p>
                         <div class="btn-group">
                             <a onclick="openImageModal('cup copy.svg')">View</a>
-                            <button
-                                onclick="openModal('3D Coffe Cup', `Created using 3D effects in Illustrator to simulate realistic lighting and volume for branding mockups.\n
+                            <button onclick="openModal('3D Coffe Cup', `Created using 3D effects in Illustrator to simulate realistic lighting and volume for branding mockups.\n
                                     ☕ Design Subject: A stylized coffee cup illustration.\n
                                     🛠️ Tool Used: Created in Adobe Illustrator using vector shapes and layer.\n
                                     🎨 Design Style: Clean, minimal, and modern — ideal for branding or digital content.\n
@@ -490,8 +493,7 @@
                         <p>Doll design with realistic textures.</p>
                         <div class="btn-group">
                             <a onclick="openImageModal('3D copy.svg')">View</a>
-                            <button
-                                onclick="openModal('3D Doll', `This artwork is a 3D-style doll illustration created using Adobe Illustrator. It combines playful and dynamic shapes with smooth gradients and perspective depth, giving it a stylized, dimensional look.The use of shading and perspective makes flat elements appear more lifelike and engaging.\n
+                            <button onclick="openModal('3D Doll', `This artwork is a 3D-style doll illustration created using Adobe Illustrator. It combines playful and dynamic shapes with smooth gradients and perspective depth, giving it a stylized, dimensional look.The use of shading and perspective makes flat elements appear more lifelike and engaging.\n
                                  🛠️ Tool Used: Created using Adobe Illustrators 3D & Materials panel.\n
                                  🎨 Design Style: Features playful, dimensional shapes with a clean and modern look.\n
                                  ✨ Effects Applied: Used extrude, bevel, lighting, and shadows for depth.\n
@@ -510,8 +512,7 @@
                         <p>Logo design with depth and perspective.</p>
                         <div class="btn-group">
                             <a onclick="openImageModal('Anandlogo.svg')">View</a>
-                            <button
-                                onclick="openModal('Logo', `⚡ Logo Purpose: Created for an electrical service or utility app, representing power, energy, and connectivity.\n
+                            <button onclick="openModal('Logo', `⚡ Logo Purpose: Created for an electrical service or utility app, representing power, energy, and connectivity.\n
                                 🛠️ Tool Used: Designed using Adobe Illustrator with vector precision.\n
                                 🎨 Design Style: Modern and minimal with a tech-inspired look, ensuring clarity and impact.\n
                                 ⚙️ Elements: Likely includes electric symbols like bolts, wires, or switch shapes to convey its function instantly.\n
@@ -534,8 +535,7 @@
                         <p>Realistic 3D Watermelon object made in Illustrator.</p>
                         <div class="btn-group">
                             <a onclick="openImageModal('POSTER (1) copy.png')">View</a>
-                            <button
-                                onclick="openModal('Advertisment Poster', `This dynamic Photoshop poster captures the excitement of a Soccer Match Night with bold typography and striking visual effects.\n 
+                            <button onclick="openModal('Advertisment Poster', `This dynamic Photoshop poster captures the excitement of a Soccer Match Night with bold typography and striking visual effects.\n 
                                 🎨 Design Highlights:\n
                                 ⚡ High-energy action shot of a soccer player in motion.\n
                                 🔥 Fiery gradient background creates intensity and movement.\n
@@ -556,8 +556,7 @@
                         <p>Box Shadow & Reflection</p>
                         <div class="btn-group">
                             <a onclick="openImageModal('reflection.png')">View</a>
-                            <button
-                                onclick="openModal('Box Shadow & Reflection', `Cardboard box placed on a reflective surface.\n
+                            <button onclick="openModal('Box Shadow & Reflection', `Cardboard box placed on a reflective surface.\n
                                     🌑 Shadow Effect\n
                                     🧭 Direction: Cast to the left and slightly behind, indicating a light source from the top-right.\n
                                     🖌️ Method: Likely created using Layer Style > Drop Shadow or a manually drawn blurred black shape.\n
@@ -572,7 +571,6 @@
                                     🎨 Background & Lighting\n
                                     🌀 Gradient Background: Light-to-dark gray gradient adds depth.\n
                                     ✨ Clean Lighting: No clutter, making the object and its effects stand out.`
-                                   
                                 )">
                                 Learn More
                             </button>
